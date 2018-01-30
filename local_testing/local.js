@@ -1,6 +1,7 @@
 window.INSTALL = window.INSTALL || {}
 window.INSTALL_OPTIONS = {
-      // default testing options
+      // TODO: edit the default testing options to include every option
+      // install.json
         "location": {
             "selector": "body",
             "method": "before"
@@ -8,6 +9,8 @@ window.INSTALL_OPTIONS = {
         "message":
            "<p>Welcome to Cloudflare Apps! This is our example app.</p><p>Download this app every time you want to make a new project.</p>"
       }
+// Below is declaring the INSTALL.createElement function which is part of the
+// App creator API
 INSTALL.createElement = function(location, element){
   element = element || document.createElement('div')
   if (!location){
@@ -18,7 +21,6 @@ INSTALL.createElement = function(location, element){
   var locations = document.querySelectorAll(location.selector)
   locations.forEach((el) => {
       el.appendChild(element)
-    // before, after, append, prepend or replace
       el = elementMethodSwitch(element, el, location.method)
   })
   return element
